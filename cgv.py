@@ -25,7 +25,7 @@ ch_id = ch_info[ 'id' ]
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
-local_test = False
+local_test = True
 
 options = webdriver.ChromeOptions()
 url = 'http://www.cgv.co.kr/ticket/?MOVIE_CD=20027683&MOVIE_CD_GROUP=20027683'
