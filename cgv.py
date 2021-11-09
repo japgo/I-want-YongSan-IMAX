@@ -57,20 +57,26 @@ yongsan.click()
 
 date_list = driver.find_element( by=By.CSS_SELECTOR, value="div[id='date_list']")
 time.sleep( 1 )
-IwantThisDay = date_list.find_element( by=By.CSS_SELECTOR, value="li[date='20211113']" )
+IwantThisDay = date_list.find_element( by=By.CSS_SELECTOR, value="li[date='20211112']" )
 #IwantThisDay = WebDriverWait( date_list, 5 ).until( EC.element_to_be_clickable( ( By.CSS_SELECTOR, "li[date='20211113']" ) ) )
 
 while True:
-	IwantThisDay.click()
+	try:
+		IwantThisDay.click()
+		time.sleep( 1 )
 
-	section_section_time = driver.find_element( by=By.CSS_SELECTOR, value="div[class='section section-time']" )
-	col_body = section_section_time.find_element( by=By.CSS_SELECTOR, value="div[class='col-body']" )
-	content_scroll_y = col_body.find_element( by=By.CSS_SELECTOR, value="div[class='content scroll-y']" )
-	theaters = content_scroll_y.find_elements( by=By.CSS_SELECTOR, value="div[class='theater']" )
-	for theater in theaters :
-		name = theater.find_element( by=By.CSS_SELECTOR, value="span[class='name']" )
-		if( str( name.text ).find( "IMAX" ) >= 0 ):
-			bot.chat_postMessage( channel=ch_id, text="떳다 IMAX!!!!! " + name.text )
+		section_section_time = driver.find_element( by=By.CSS_SELECTOR, value="div[class='section section-time']" )
+		col_body = section_section_time.find_element( by=By.CSS_SELECTOR, value="div[class='col-body']" )
+		content_scroll_y = col_body.find_element( by=By.CSS_SELECTOR, value="div[class='content scroll-y']" )
+		theaters = content_scroll_y.find_elements( by=By.CSS_SELECTOR, value="div[class='theater']" )
+		for theater in theaters :
+				name = theater.find_element( by=By.CSS_SELECTOR, value="span[class='name']" )
+				print( name.text )
+				if( str( name.text ).find( "IMAX" ) >= 0 ):
+					bot.chat_postMessage( channel=ch_id, text="떳다 IMAX!!!!! @wonyong.lee @goldjix " + name.text )
+
+	except Exception as ex:
+		print( repr( ex ) )
 		
 	print( "searching IMAX..." )
 	time.sleep( 5 )
