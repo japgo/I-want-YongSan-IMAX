@@ -57,7 +57,7 @@ yongsan.click()
 
 date_list = driver.find_element( by=By.CSS_SELECTOR, value="div[id='date_list']")
 time.sleep( 1 )
-IwantThisDay = date_list.find_element( by=By.CSS_SELECTOR, value="li[date='20211112']" )
+IwantThisDay = date_list.find_element( by=By.CSS_SELECTOR, value="li[date='20211113']" )
 #IwantThisDay = WebDriverWait( date_list, 5 ).until( EC.element_to_be_clickable( ( By.CSS_SELECTOR, "li[date='20211113']" ) ) )
 
 while True:
