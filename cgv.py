@@ -72,4 +72,5 @@ while True:
 		if( str( name.text ).find( "IMAX" ) >= 0 ):
 			bot.chat_postMessage( channel=ch_id, text="떳다 IMAX!!!!! " + name.text )
 		
+	print( "searching IMAX..." )
 	time.sleep( 5 )
