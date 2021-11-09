@@ -1,6 +1,6 @@
 
 def get_bot_id_and_token_and_channel():
-	return 'U02DCLSTTTJ', 'xoxb-283900351073-2454706945936-eubtGkrH0Q0Cf75zVRyhrodk', 'general' #JandW
+	return 'U02DCLSTTTJ', 'xoxb-283900351073-2454706945936-Wq80MTLt1Vo16AXsDXjfD1dO', 'general' #JandW
 	#return 'U02HXCANAS1', 'xoxb-581212750160-2609418758885-tTUNSH348Qv5KImnT0oXfbsD', '_평일휴일_ot_신청' #sw3team
 
 def get_app_level_token():
