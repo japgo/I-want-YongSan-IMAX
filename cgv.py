@@ -45,8 +45,8 @@ else:
 	driver.get( url )
 
 
-
-ticket_iframe = driver.find_element( by=By.CSS_SELECTOR, value="iframe[id='ticket_iframe']")
+#ticket_iframe = driver.find_element( by=By.CSS_SELECTOR, value="iframe[id='ticket_iframe']")
+ticket_iframe = WebDriverWait( driver, 5 ).until( EC.visibility_of_element_located( ( By.CSS_SELECTOR, "iframe[id='ticket_iframe']" ) ) )
 driver.switch_to.frame( ticket_iframe )
 theater_area_list = driver.find_element( by=By.CSS_SELECTOR, value="div[id='theater_area_list']" )
 time.sleep( 3 )
