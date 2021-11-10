@@ -25,7 +25,7 @@ ch_id = ch_info[ 'id' ]
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
-local_test = False
+local_test = True
 
 options = webdriver.ChromeOptions()
 url = 'http://www.cgv.co.kr/ticket/?MOVIE_CD=20027683&MOVIE_CD_GROUP=20027683'
@@ -63,10 +63,10 @@ IwantThisDay = date_list.find_element( by=By.CSS_SELECTOR, value="li[date='20211
 while True:
 	try:
 		IwantThisDay.click()
-		time.sleep( 1 )
-
+		
 		section_section_time = driver.find_element( by=By.CSS_SELECTOR, value="div[class='section section-time']" )
 		col_body = section_section_time.find_element( by=By.CSS_SELECTOR, value="div[class='col-body']" )
+		time.sleep( 2 )
 		content_scroll_y = col_body.find_element( by=By.CSS_SELECTOR, value="div[class='content scroll-y']" )
 		theaters = content_scroll_y.find_elements( by=By.CSS_SELECTOR, value="div[class='theater']" )
 		for theater in theaters :
