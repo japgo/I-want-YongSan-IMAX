@@ -25,7 +25,7 @@ ch_id = ch_info[ 'id' ]
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
-local_test = False
+local_test = True
 
 options = webdriver.ChromeOptions()
 url = 'http://www.cgv.co.kr/ticket/?MOVIE_CD=20027683&MOVIE_CD_GROUP=20027683'
@@ -49,9 +49,9 @@ else:
 ticket_iframe = WebDriverWait( driver, 5 ).until( EC.visibility_of_element_located( ( By.CSS_SELECTOR, "iframe[id='ticket_iframe']" ) ) )
 driver.switch_to.frame( ticket_iframe )
 theater_area_list = driver.find_element( by=By.CSS_SELECTOR, value="div[id='theater_area_list']" )
-time.sleep( 3 )
-yongsan = theater_area_list.find_element( by=By.CSS_SELECTOR, value="li[data-index='119']" )
-#yongsan = WebDriverWait( driver, 5 ).until( EC.element_to_be_clickable( ( By.CSS_SELECTOR, "li[data-index='119']" ) ) )
+time.sleep( 10 )
+#yongsan = theater_area_list.find_element( by=By.CSS_SELECTOR, value="li[data-index='119']" )
+yongsan = WebDriverWait( driver, 5 ).until( EC.element_to_be_clickable( ( By.CSS_SELECTOR, "li[data-index='119']" ) ) )
 yongsan.click()
 
 
