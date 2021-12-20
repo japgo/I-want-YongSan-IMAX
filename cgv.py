@@ -28,7 +28,8 @@ CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 local_test = False
 
 options = webdriver.ChromeOptions()
-url = 'http://www.cgv.co.kr/ticket/?MOVIE_CD=20027683&MOVIE_CD_GROUP=20027683'
+# url = 'http://www.cgv.co.kr/ticket/?MOVIE_CD=20027683&MOVIE_CD_GROUP=20027683'
+url = 'http://www.cgv.co.kr/ticket/?MOVIE_CD=20027596&MOVIE_CD_GROUP=20027596'
 options.add_argument('--headless')
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
@@ -51,13 +52,13 @@ driver.switch_to.frame( ticket_iframe )
 theater_area_list = driver.find_element( by=By.CSS_SELECTOR, value="div[id='theater_area_list']" )
 time.sleep( 10 )
 #yongsan = theater_area_list.find_element( by=By.CSS_SELECTOR, value="li[data-index='119']" )
-yongsan = WebDriverWait( driver, 5 ).until( EC.element_to_be_clickable( ( By.CSS_SELECTOR, "li[data-index='119']" ) ) )
+yongsan = WebDriverWait( driver, 5 ).until( EC.element_to_be_clickable( ( By.CSS_SELECTOR, "li[data-index='118']" ) ) )
 yongsan.click()
 
 
 date_list = driver.find_element( by=By.CSS_SELECTOR, value="div[id='date_list']")
 time.sleep( 1 )
-IwantThisDay = date_list.find_element( by=By.CSS_SELECTOR, value="li[date='20211113']" )
+IwantThisDay = date_list.find_element( by=By.CSS_SELECTOR, value="li[date='20211222']" )
 #IwantThisDay = WebDriverWait( date_list, 5 ).until( EC.element_to_be_clickable( ( By.CSS_SELECTOR, "li[date='20211113']" ) ) )
 
 while True:
@@ -73,7 +74,10 @@ while True:
 				name = theater.find_element( by=By.CSS_SELECTOR, value="span[class='name']" )
 				print( name.text )
 				if( str( name.text ).find( "IMAX" ) >= 0 ):
-					bot.chat_postMessage( channel=ch_id, text="떳다 IMAX!!!!! @wonyong.lee @goldjix " + name.text )
+					count = theater.find_element( by=By.CSS_SELECTOR, value="span[class='count']" )
+					print( count.text )
+					if( str( count.text ).find( "매진" ) < 0  ):
+						bot.chat_postMessage( channel=ch_id, text="떳다 IMAX!!!!! @wonyong.lee @goldjix " + name.text )
 
 	except Exception as ex:
 		print( repr( ex ) )
