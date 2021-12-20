@@ -25,7 +25,7 @@ ch_id = ch_info[ 'id' ]
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
-local_test = False
+local_test = False # False True
 
 options = webdriver.ChromeOptions()
 # url = 'http://www.cgv.co.kr/ticket/?MOVIE_CD=20027683&MOVIE_CD_GROUP=20027683'
@@ -75,9 +75,17 @@ while True:
 				print( name.text )
 				if( str( name.text ).find( "IMAX" ) >= 0 ):
 					count = theater.find_element( by=By.CSS_SELECTOR, value="span[class='count']" )
-					print( count.text )
-					if( str( count.text ).find( "매진" ) < 0  ):
-						bot.chat_postMessage( channel=ch_id, text="떳다 IMAX!!!!! @wonyong.lee @goldjix " + name.text )
+					time.sleep( 1 )
+					print( f"count:{count.text}, day:{IwantThisDay.text}" )
+	
+					if( str( count.text ).find( "매진" ) >= 0 ):
+						continue
+ 
+					if( str( count.text ).find( "석" ) >= 0 ):
+						str_cnt = str( count.text ).replace( "석", "" )
+						int_cnt = int( str_cnt )
+						if( 3 < int_cnt and int_cnt < 624 ):
+							bot.chat_postMessage( channel=ch_id, text="떳다 IMAX!!!!! @wonyong.lee @goldjix " + name.text )
 
 	except Exception as ex:
 		print( repr( ex ) )
